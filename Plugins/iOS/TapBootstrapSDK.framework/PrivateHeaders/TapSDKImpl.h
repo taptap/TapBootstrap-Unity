@@ -47,8 +47,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (BOOL)handleOpenURL:(NSURL *)url;
 
 + (void)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
-
-- (nullable TDSAccount *)getAccount;
 @end
 
 NS_ASSUME_NONNULL_END

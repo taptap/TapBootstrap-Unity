@@ -50,7 +50,7 @@ namespace TapTap.Bootstrap.Editor
                 return;
             }
 
-            Debug.LogError("TapBootstrap add Bundle Failed!");
+            Debug.LogWarning("TapBootstrap add Bundle Failed!");
         }
 
         private static void HandlerAppleSignIn(PBXProject proj, string target, string path, string plistPath)
@@ -59,7 +59,7 @@ namespace TapTap.Bootstrap.Editor
             var appleSignInEnableKey = "com.apple.developer.applesignin";
             if (string.IsNullOrEmpty(appleSignInEnable) || appleSignInEnable.Equals("false"))
             {
-                Debug.LogError("TapSDK can't open Apple SignIn in XCode, Please Check Info.plist.");
+                Debug.LogWarning("TapSDK can't open Apple SignIn in XCode, Please Check Info.plist.");
                 return;
             }
 
@@ -67,7 +67,7 @@ namespace TapTap.Bootstrap.Editor
             var tempEntitlements = new PlistDocument();
             if (!((tempEntitlements.root[appleSignInEnableKey] = new PlistElementArray()) is PlistElementArray arrSigninWithApple))
             {
-                Debug.LogError($"TapSDK can't find {appleSignInEnableKey}.");
+                Debug.LogWarning($"TapSDK can't find {appleSignInEnableKey}.");
                 return;
             }
             arrSigninWithApple.values.Add(new PlistElementString("Default"));

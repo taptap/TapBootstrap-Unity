@@ -29,6 +29,8 @@ static NSString *const TDS_FRIEND_USER_INFO_MULTI = @"/api/v1/user/multi";
 - (TDSNetExecutor *)doWithRequest:(TDSNetRequestModel *)request;
 
 - (NSString *)getXUAString;
+
++ (NSString *)getWSBaseUrl;
 @end
 
 NS_ASSUME_NONNULL_END

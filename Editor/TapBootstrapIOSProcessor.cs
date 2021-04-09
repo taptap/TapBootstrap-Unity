@@ -41,7 +41,7 @@ namespace TapTap.Bootstrap.Editor
             if (TapCommonCompile.HandlerIOSSetting(path,
                 Application.dataPath,
                 "TapBootstrapResource",
-                "com.tapsdk.bootstrap",
+                "com.taptap.tds.bootstrap",
                 "Bootstrap",
                 new[] {"TapBootstrapResource.bundle"},
                 target, projPath, proj))

@@ -1,12 +1,17 @@
-# [使用 TapTap.Bootstrap ](./Documentations/README.md)
+# [使用 TapTap.Bootstrap ](./Documentation/README.md)
 
-## 1.命名空间
+## 使用前提
+
+使用 TapTap.Bootstrap 前提是必须依赖以下库:
+* [TapTap.Common](https://github.com/TapTap/TapCommon-Unity.git)
+
+## 命名空间
 
 ```c#
 using TapTap.Bootstrap;
 ```
 
-## 2.接口描述
+## 接口描述
 
 ### 初始化
 

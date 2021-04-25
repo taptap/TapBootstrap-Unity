@@ -36,8 +36,6 @@ namespace TapTap.Bootstrap.Editor
 
             TapCommonCompile.HandlerPlist(path, plistFile.FullName);
             
-            HandlerAppleSignIn(proj, target, path, plistFile.FullName);
-            
             if (TapCommonCompile.HandlerIOSSetting(path,
                 Application.dataPath,
                 "TapBootstrapResource",
@@ -53,26 +51,5 @@ namespace TapTap.Bootstrap.Editor
             Debug.LogWarning("TapBootstrap add Bundle Failed!");
         }
 
-        private static void HandlerAppleSignIn(PBXProject proj, string target, string path, string plistPath)
-        {
-            var appleSignInEnable = TapCommonCompile.GetValueFromPlist(plistPath, "Apple_SignIn_Enable");
-            var appleSignInEnableKey = "com.apple.developer.applesignin";
-            if (string.IsNullOrEmpty(appleSignInEnable) || appleSignInEnable.Equals("false"))
-            {
-                Debug.LogWarning("TapSDK can't open Apple SignIn in XCode, Please Check Info.plist.");
-                return;
-            }
-
-            var entitleFilePath = $"{path}/Unity-iPhone.entitlements";
-            var tempEntitlements = new PlistDocument();
-            if (!((tempEntitlements.root[appleSignInEnableKey] = new PlistElementArray()) is PlistElementArray arrSigninWithApple))
-            {
-                Debug.LogWarning($"TapSDK can't find {appleSignInEnableKey}.");
-                return;
-            }
-            arrSigninWithApple.values.Add(new PlistElementString("Default"));
-            proj.AddCapability(target, PBXCapabilityType.SignInWithApple, entitleFilePath);
-            tempEntitlements.WriteToFile(entitleFilePath);
-        }
     }
 }

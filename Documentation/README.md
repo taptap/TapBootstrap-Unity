@@ -16,7 +16,13 @@ using TapTap.Bootstrap;
 ### 初始化
 
 ```c#
-TapConfig config = new TapConfig(string clientId,bool isCN);
+var config = new TapConfig.TapConfigBuilder()
+                .ClientID("client_id")
+                .ClientSecret("client_secret")
+                .RegionType(RegionType.CN)
+                .TapDBConfig("channel", "gameVersion")
+                .Builder();
+                
 TapBootstrap.Init(config);
 ```
 

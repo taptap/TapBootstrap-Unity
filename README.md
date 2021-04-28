@@ -16,7 +16,13 @@ using TapTap.Bootstrap;
 ### 初始化
 
 ```c#
-TapConfig config = new TapConfig(string clientId,bool isCN);
+var config = new TapConfig.TapConfigBuilder()
+                .ClientID("client_id")
+                .ClientSecret("client_secret")
+                .RegionType(RegionType.CN)
+                .TapDBConfig("channel", "gameVersion")
+                .Builder();
+                
 TapBootstrap.Init(config);
 ```
 
@@ -55,6 +61,11 @@ TapBootstrap.GetUser(Action<TapUser,TapError> action);
 ### 获取详细用户信息
 ```c#
 TapBootstrap.GetDetailUser(Action<TapUserDetail, TapError> action);
+```
+
+### 篝火测试资格
+```c#
+TapBootstrap.GetTestQualification(Action<bool,TapError> action);
 ```
 
 ### 获取AccessToken

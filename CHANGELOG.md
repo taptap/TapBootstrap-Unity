@@ -23,7 +23,7 @@
                 .ClientID("client_id")
                 .ClientSecret("client_secret")
                 .RegionType(RegionType.CN)
-                .TapDBConfig("channel", "gameVersion")
+                .TapDBConfig(true,"channel", "gameVersion")
                 .Builder();
   TapBootstrap.Init(config);
   ```

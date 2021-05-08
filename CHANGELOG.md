@@ -19,12 +19,12 @@
 * TapConfig Refactor Constructor
   ```c#
   //建议使用以下 TapConfig 构造方法进行初始化
-  var config = new TapConfig.TapConfigBuilder()
+  var config = new TapConfig.Builder()
                 .ClientID("client_id")
                 .ClientSecret("client_secret")
                 .RegionType(RegionType.CN)
-                .TapDBConfig(true,"channel", "gameVersion")
-                .Builder();
+                .TapDBConfig(true,"channel", "gameVersion",true)
+                .ConfigBuilder();
   TapBootstrap.Init(config);
   ```
 

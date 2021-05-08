@@ -1,5 +1,4 @@
 # 使用 TapTap.Bootstrap
-
 ## 使用前提
 
 使用 TapTap.Bootstrap 前提是必须依赖以下库:
@@ -23,7 +22,7 @@ var config = new TapConfig.TapConfigBuilder()
                 .ClientID("client_id")
                 .ClientSecret("client_secret")
                 .RegionType(RegionType.CN)
-                .TapDBConfig(true,"channel", "gameVersion")
+                .TapDBConfig(true,"channel","gameVersion",true)
                 .Builder();
 ```
 关闭 TapDB
@@ -32,7 +31,7 @@ var config = new TapConfig.TapConfigBuilder()
                 .ClientID("client_id")
                 .ClientSecret("client_secret")
                 .RegionType(RegionType.CN)
-//#             .TapDBConfig(false,null,null)
+//#             .TapDBConfig(false,null,null,false)
                 .EnableTapDB(false)
                 .Builder();
 ```

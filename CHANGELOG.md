@@ -1,6 +1,6 @@
 # ChangeLog
 
-## 2.1.0
+## 2.1.1
 
 ### Feature
 
@@ -9,7 +9,6 @@
   Bootstrap.GetTestQualification((bool, error)=>{ }):
     ```
 * TapDB 通过 TapConfig 进行自动初始化
-* 支持性改动用于 TapTap.Friends
 
 ### Breaking changes
 
@@ -23,10 +22,20 @@
                 .ClientID("client_id")
                 .ClientSecret("client_secret")
                 .RegionType(RegionType.CN)
-                .TapDBConfig(true,"channel", "gameVersion",true)
+                .TapDBConfig(true, "gameChannel", "gameVersion", true)
                 .ConfigBuilder();
   TapBootstrap.Init(config);
   ```
+
+### Dependencies
+
+* TapTap.Common v2.1.1
+
+## 2.1.0
+
+### Feature
+
+* 支持性改动用于 TapTap.Friends
 
 ### Dependencies
 

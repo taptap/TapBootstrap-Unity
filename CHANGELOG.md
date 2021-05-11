@@ -6,16 +6,9 @@
 
 * 新增篝火测试资格校验
     ```
-  Bootstrap.GetTestQualification((bool, error)=>{ }):
+  TapBootstrap.GetTestQualification((bool, error)=>{ }):
     ```
-* TapDB 通过 TapConfig 进行自动初始化
-
-### Breaking changes
-
-* LoginType 删除 Apple、Guest 登陆方式
-* TDS-Info.plist 删除 Apple_SignIn_Enable 配置
-* 废弃 Bind 接口
-* TapConfig Refactor Constructor
+* 通过 TapConfig 进行初始化配置
   ```c#
   //建议使用以下 TapConfig 构造方法进行初始化
   var config = new TapConfig.Builder()
@@ -26,6 +19,11 @@
                 .ConfigBuilder();
   TapBootstrap.Init(config);
   ```
+### Breaking changes
+
+* LoginType 删除 Apple、Guest 登陆方式
+* TDS-Info.plist 删除 Apple_SignIn_Enable 配置
+* 废弃 Bind 接口
 
 ### Dependencies
 

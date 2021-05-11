@@ -9,6 +9,8 @@
   TapBootstrap.GetTestQualification((bool, error)=>{ }):
     ```
 * 通过 TapConfig 进行初始化配置
+  * 新增 TapDBConfig 用于 TapDB 初始化配置
+  * 新增 ClientSecret 用于 TapSDK 初始化
   ```c#
   //建议使用以下 TapConfig 构造方法进行初始化
   var config = new TapConfig.Builder()
@@ -24,6 +26,7 @@
 * LoginType 删除 Apple、Guest 登陆方式
 * TDS-Info.plist 删除 Apple_SignIn_Enable 配置
 * 废弃 Bind 接口
+* TapConfig 构造方法参数修改
 
 ### Dependencies
 

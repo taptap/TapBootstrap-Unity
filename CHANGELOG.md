@@ -1,5 +1,15 @@
 # ChangeLog
 
+## 2.1.2
+
+### BreakingChange
+
+* 废弃 OpenUserCenter 接口
+
+### Dependencies
+
+* TapTap.Common v2.1.2
+
 ## 2.1.1
 
 ### Feature

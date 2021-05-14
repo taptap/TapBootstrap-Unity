@@ -15,8 +15,8 @@
 #import <TapCommonSDK/TapCommonSDK.h>
 
 #define TapSDK                @"TapSDK"
-#define TapSDK_VERSION_NUMBER @"20101001"
-#define TapSDK_VERSION        @"2.1.1"
+#define TapSDK_VERSION_NUMBER @"20102001"
+#define TapSDK_VERSION        @"2.1.2"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -71,9 +71,6 @@ typedef void (^TapUserDetailsHandler)(TapUserDetails *_Nullable userDetail, NSEr
 
 /// 退出登录
 + (void)logout;
-
-/// 打开用户中心
-+ (void)openUserCenter;
 
 /// 获取用户是否有测试资格
 /// @param handler 回调

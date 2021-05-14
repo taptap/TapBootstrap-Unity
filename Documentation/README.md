@@ -91,8 +91,3 @@ TapBootstrap.GetDetailUser(Action<TapUserDetail, TapError> action);
 ```c#
 TapBootstrap.Logout();
 ```
-
-### 12.打开用户中心
-```c#
-TapBootstrap.OpenUserCenter();
-```

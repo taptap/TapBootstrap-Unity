@@ -1,5 +1,12 @@
 # ChangeLog
 
+## 2.1.3
+
+### Feature
+
+* 新增繁中、日文、韩文、泰文和印尼语多语言配置
+
+
 ## 2.1.2
 
 ### BreakingChange

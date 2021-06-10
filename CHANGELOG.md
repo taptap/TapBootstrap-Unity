@@ -1,5 +1,15 @@
 # ChangeLog
 
+## 2.1.4
+
+### Optimization and fixed bugs
+
+- 优化多语言相关
+
+### Dependencies
+
+- TapTap.Common v2.1.4
+
 ## 2.1.3
 
 ### Feature

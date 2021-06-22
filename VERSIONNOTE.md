@@ -1,3 +1,3 @@
-### Optimization and fixed bugs
+### Dependencies
 
-- 内部优化
+- TapTap.Common v2.1.5

@@ -1,5 +1,11 @@
 # ChangeLog
 
+## 2.1.6
+
+### Dependencies
+
+- TapTap.Common v2.1.6
+
 ## 2.1.5
 
 ### Dependencies
@@ -22,7 +28,6 @@
 
 * 新增繁中、日文、韩文、泰文和印尼语多语言配置
 
-
 ## 2.1.2
 
 ### BreakingChange
@@ -42,8 +47,8 @@
   TapBootstrap.GetTestQualification((bool, error)=>{ }):
     ```
 * 通过 TapConfig 进行初始化配置
-  * 新增 TapDBConfig 用于 TapDB 初始化配置
-  * 新增 ClientSecret 用于 TapSDK 初始化
+    * 新增 TapDBConfig 用于 TapDB 初始化配置
+    * 新增 ClientSecret 用于 TapSDK 初始化
   ```c#
   //建议使用以下 TapConfig 构造方法进行初始化
   var config = new TapConfig.Builder()
@@ -54,6 +59,7 @@
                 .ConfigBuilder();
   TapBootstrap.Init(config);
   ```
+
 ### Breaking changes
 
 * LoginType 删除 Apple、Guest 登陆方式

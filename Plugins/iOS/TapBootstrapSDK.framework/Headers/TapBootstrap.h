@@ -15,8 +15,8 @@
 #import <TapCommonSDK/TapCommonSDK.h>
 
 #define TapSDK                @"TapSDK"
-#define TapSDK_VERSION_NUMBER @"20106001"
-#define TapSDK_VERSION        @"2.1.6"
+#define TapSDK_VERSION_NUMBER @"20107001"
+#define TapSDK_VERSION        @"2.1.7"
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -4,6 +4,8 @@
 
 使用 TapTap.Bootstrap 前提是必须依赖以下库:
 * [TapTap.Common](https://github.com/TapTap/TapCommon-Unity.git)
+* [TapTap.Login](https://github.com/TapTap/TapLogin-Unity.git)
+* [LeanCloud.Storage](https://github.com/leancloud/csharp-sdk)
 
 ## 命名空间
 
@@ -15,81 +17,58 @@ using TapTap.Bootstrap;
 
 ### 1.初始化
 
-> TapBootstrap 会根据 TapConfig 中的 TapDBConfig 配置来进行 TapDB 的自动初始化。
+#### TapBootstrap 会根据 TapConfig 中的 TapDBConfig 配置来进行 TapDB 的自动初始化。
 
-开启 TapDB
+##### 开启 TapDB
 ```c#
 var config = new TapConfig.TapConfigBuilder()
                 .ClientID("client_id")
                 .ClientSecret("client_secret")
+                .ServerURL("https://ikggdre2.lc-cn-n1-shared.com")
                 .RegionType(RegionType.CN)
                 .TapDBConfig(true,"channel","gameVersion",true)
                 .Builder();
 ```
-关闭 TapDB
+##### 关闭 TapDB
 ```c#
 var config = new TapConfig.TapConfigBuilder()
                 .ClientID("client_id")
                 .ClientSecret("client_secret")
+                .ServerURL("https://ikggdre2.lc-cn-n1-shared.com")
                 .RegionType(RegionType.CN)
 //#             .TapDBConfig(false,null,null,false)
                 .EnableTapDB(false)
                 .Builder();
 ```
-初始化 TapSDK
+##### 初始化
 ```c#
 TapBootstrap.Init(config);
 ```
 
-### 2.登陆
+### 2.账户系统
+
+> 登陆成功之后，都会得到一个 `TDSUser` 实例
+
+#### 使用 TapTap OAuth 授权结果直接登陆账户系统
 
 ```c#
-TapBootstrap.Login(LoginType loginType, string[] permissions);
+var tdsUser = await TDSUser.LoginWithTapTap();
 ```
 
-### 3.设置语言
+#### 游客登陆
 ```c#
-TapBootstrap.SetPreferLanguage(TapLanguage tapLanguage);
+var tdsUser = await TDSUser.LoginAnonymously();
 ```
 
-### 4.绑定TapTap账号（已废弃）
+#### 绑定第三方平台账号
 ```c#
-TapBootstrap.Bind(LoginType loginType, string[] permissions);
+var tdsUser = await TDSUser.LoginWithAuthData(Dictionary<string, object> authData, string platform,
+            LCUserAuthDataLoginOption option = null);
 ```
 
-### 5.注册用户状态回调
-
+#### 退出登陆
 ```c#
-TapBootstrap.RegisterUserStatusChangedListener(ITapUserStatusChangedListener listener); 
+TDSUser.Logout();
 ```
 
-### 6.注册登陆回调
-```c#
-TapBootstrap.RegisterLoginResultListener(ITapLoginResultListener listener);
-```
-
-### 7.获取用户信息
-```c#
-TapBootstrap.GetUser(Action<TapUser,TapError> action);
-```
-
-### 8.获取详细用户信息
-```c#
-TapBootstrap.GetDetailUser(Action<TapUserDetail, TapError> action);
-```
-
-### 9.篝火测试资格
-```c#
-TapBootstrap.GetTestQualification(Action<bool,TapError> action);
-```
-
-### 10.获取AccessToken
-```c#
-TapBootstrap.GetDetailUser(Action<TapUserDetail, TapError> action);
-```
-
-### 11.登出
-```c#
-TapBootstrap.Logout();
-```
 

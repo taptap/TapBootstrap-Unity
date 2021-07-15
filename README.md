@@ -49,24 +49,33 @@ TapBootstrap.Init(config);
 
 > 登陆成功之后，都会得到一个 `TDSUser` 实例
 
-#### 使用 TapTap OAuth 授权结果直接登陆账户系统
+#### 使用 TapTap OAuth 授权结果直接登陆/注册账户系统
 
 ```c#
 var tdsUser = await TDSUser.LoginWithTapTap();
 ```
 
 #### 游客登陆
+
 ```c#
 var tdsUser = await TDSUser.LoginAnonymously();
 ```
 
-#### 绑定第三方平台账号
+#### 使用第三方平台授权登录/注册账户
+
 ```c#
 var tdsUser = await TDSUser.LoginWithAuthData(Dictionary<string, object> authData, string platform,
             LCUserAuthDataLoginOption option = null);
 ```
 
+#### 绑定第三方平台授权
+
+```c#
+await TDSUser.AssociateAuthData(Dictionary<string, object> authData, string platform);
+```
+
 #### 退出登陆
+
 ```c#
 TDSUser.Logout();
 ```

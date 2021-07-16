@@ -10,7 +10,7 @@ TapSDK 3.0 开始，我们在单纯的 TapTap 登录之外，还提供了一个�
 
 ### BreakingChange
 
--  `TapBootstrap` 模块仅保留 `TapBootstrap.Init(tapConfig)` 接口
+-  `TapBootstrap` 接口仅保留 `TapBootstrap.Init(tapConfig)` 接口
 
 ### Dependencies
 

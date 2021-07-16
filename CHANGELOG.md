@@ -14,7 +14,7 @@ TapSDK 3.0 开始，我们在单纯的 TapTap 登录之外，还提供了一个�
 
 ### Dependencies
 
-- LeanCloud.Storage v0.8.3
+- LeanCloud.Storage v0.8.2
 - TapTap.Login v3.0.0
 - TapTap.Common v3.0.0
 

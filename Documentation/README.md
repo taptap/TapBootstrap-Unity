@@ -21,7 +21,7 @@ using TapTap.Bootstrap;
 
 ##### 开启 TapDB
 ```c#
-var config = new TapConfig.TapConfigBuilder()
+var config = new TapConfig.Builder()
                 .ClientID("client_id")
                 .ClientSecret("client_secret")
                 .ServerURL("https://ikggdre2.lc-cn-n1-shared.com")
@@ -31,7 +31,7 @@ var config = new TapConfig.TapConfigBuilder()
 ```
 ##### 关闭 TapDB
 ```c#
-var config = new TapConfig.TapConfigBuilder()
+var config = new TapConfig.Builder()
                 .ClientID("client_id")
                 .ClientSecret("client_secret")
                 .ServerURL("https://ikggdre2.lc-cn-n1-shared.com")

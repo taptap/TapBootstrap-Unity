@@ -23,7 +23,7 @@ using TapTap.Bootstrap;
 ```c#
 var config = new TapConfig.Builder()
                 .ClientID("client_id")
-                .ClientSecret("client_secret")
+                .ClientToken("client_token")
                 .ServerURL("https://ikggdre2.lc-cn-n1-shared.com")
                 .RegionType(RegionType.CN)
                 .TapDBConfig(true,"channel","gameVersion",true)
@@ -33,7 +33,7 @@ var config = new TapConfig.Builder()
 ```c#
 var config = new TapConfig.Builder()
                 .ClientID("client_id")
-                .ClientSecret("client_secret")
+                .ClientToken("client_token")
                 .ServerURL("https://ikggdre2.lc-cn-n1-shared.com")
                 .RegionType(RegionType.CN)
 //#             .TapDBConfig(false,null,null,false)

@@ -2,12 +2,16 @@
 
 ## 3.1.0
 
+### New Feature
+
+- `TDSUser` 新增好友系统操作
+
 ### Dependencies
 
 - TapTap.Login v3.1.0
 - TapTap.Common v3.1.0
-- LeanCloud.Storage v0.9.1
-- LeanCloud.Realtime v0.9.1
+- LeanCloud.Storage v0.9.2
+- LeanCloud.Realtime v0.9.2
 
 ## 3.0.0
 

@@ -6,6 +6,7 @@
 * [TapTap.Common](https://github.com/TapTap/TapCommon-Unity.git)
 * [TapTap.Login](https://github.com/TapTap/TapLogin-Unity.git)
 * [LeanCloud.Storage](https://github.com/leancloud/csharp-sdk)
+* [LeanCloud.RealTime](https://github.com/leancloud/csharp-sdk)
 
 ## 命名空间
 
@@ -22,23 +23,23 @@ TapBootstrap 会根据 TapConfig 中的 TapDBConfig 配置来进行 TapDB 的自
 ### 开启 TapDB
 ```c#
 var config = new TapConfig.Builder()
-                .ClientID("client_id")
-                .ClientToken("client_token")
-                .ServerURL("https://ikggdre2.lc-cn-n1-shared.com")
-                .RegionType(RegionType.CN)
-                .TapDBConfig(true,"channel","gameVersion",true)
-                .Builder();
+    .ClientID("client_id")
+    .ClientToken("client_token")
+    .ServerURL("https://ikggdre2.lc-cn-n1-shared.com")
+    .RegionType(RegionType.CN)
+    .TapDBConfig(true,"channel","gameVersion",true)
+    .Builder();
 ```
 ### 关闭 TapDB
 ```c#
 var config = new TapConfig.Builder()
-                .ClientID("client_id")
-                .ClientToken("client_token")
-                .ServerURL("https://ikggdre2.lc-cn-n1-shared.com")
-                .RegionType(RegionType.CN)
-//#             .TapDBConfig(false,null,null,false)
-                .EnableTapDB(false)
-                .Builder();
+    .ClientID("client_id")
+    .ClientToken("client_token")
+    .ServerURL("https://ikggdre2.lc-cn-n1-shared.com")
+    .RegionType(RegionType.CN)
+//# .TapDBConfig(false,null,null,false)
+    .EnableTapDB(false)
+    .Builder();
 ```
 ### 初始化
 ```c#
@@ -65,7 +66,7 @@ var tdsUser = await TDSUser.LoginAnonymously();
 
 ```c#
 var tdsUser = await TDSUser.LoginWithAuthData(Dictionary<string, object> authData, string platform,
-            LCUserAuthDataLoginOption option = null);
+LCUserAuthDataLoginOption option = null);
 ```
 
 ### 绑定第三方平台授权
@@ -192,3 +193,52 @@ if (count > 0) {
 ```
 
 这一查询是通过网络发送到服务端执行的，一般情况下，我们推荐开发者在游戏启动时拉取一次当前登录用户的好友列表，然后缓存在本地，以后需要检查另外玩家是否为当前用户的好友时，直接从缓存中查询即可。如果担心好友数据变化，缓存没有得到及时更新，可以调用前面「响应好友变化通知」的方法，对好友数据更新进行监听，这样在绝大部分时候数据同步都是可以保证的。
+
+## 4.云存档
+
+### 构建云存档元数据
+
+```c#
+var gameSave = new TapGameSave
+{
+    Name = "GameSave_Name",// 存档名称
+    Summary = "GameSave_Description", // 该字段会作为展示给用户的实际存档名
+    ModifiedAt = DateTime.Now.ToLocalTime(), // 原文件修改时间
+    PlayedTime = 1000L, // 游戏时长，单位 ms (非必填)
+    ProgressValue = 100, // 游戏进度 ，单位 int (非必填)
+    CoverFilePath = pic, // 游戏封面，可以传入一个 LCFile 或者 本地文件路径，SDK 限制为 png/jpeg 格式
+    GameFilePath = dll // 存档源文件，可以传入一个 LCFile 或者 本地文件路径
+};
+
+```
+### 保存存档
+
+保存存档时，会去检查当前`TDSUser`是否已经登录以及元数据。
+
+同时 SDK 在上传时会去限制存档本身以及相关联的两个文件（ Cover 以及 GameFile ）的权限为当前用户本身。
+```c#
+await gameSave.Save();
+```
+
+### 查询当前用户的所有存档
+
+```c#
+var collection = await TapGameSave.GetCurrentUserGameSaves();
+
+foreach(var save in collection){
+    // 当前用户所有存档
+}
+```
+
+### 查询当前用户存档
+
+我们使用 `LCQuery` 来查询当前用户的云存档。
+
+SDK 查询封装了一个限定方法用于查询当前`TDSUser`的云存档。
+```c#
+TDSUser user = await TDSUser.GetCurrent();
+LCQuery<TapGameSave> gameSaveQuery = TapGameSave.GetQueryWithUser(user);
+// 查询 Name 为 TDSUser_GameSave_Name 的云存档
+gameSaveQuery.WhereEqualTo("name","TDSUser_GameSave_Name");
+var collection = await gameSaveQuery.Find();
+```

@@ -206,8 +206,8 @@ var gameSave = new TapGameSave
     ModifiedAt = DateTime.Now.ToLocalTime(), // 原文件修改时间
     PlayedTime = 1000L, // 游戏时长，单位 ms (非必填)
     ProgressValue = 100, // 游戏进度 ，单位 int (非必填)
-    CoverFilePath = pic, // 游戏封面，可以传入一个 LCFile 或者 本地文件路径，SDK 限制为 png/jpeg 格式
-    GameFilePath = dll // 存档源文件，可以传入一个 LCFile 或者 本地文件路径
+    CoverFilePath = pic, // 游戏封面，可以传入一个本地文件路径，SDK 限制为 png/jpeg 格式
+    GameFilePath = dll // 存档源文件，可以传入一个本地文件路径
 };
 
 ```
@@ -225,8 +225,21 @@ await gameSave.Save();
 ```c#
 var collection = await TapGameSave.GetCurrentUserGameSaves();
 
-foreach(var save in collection){
-    // 当前用户所有存档
+foreach(var gameSave in collection){
+    // 存档概览
+    var name = gameSave.Summary; 
+    // 原文件修改时间
+    var modifiedAt = gameSave.ModifiedAt;
+    // 游戏时长
+    var playedTime = gameSave.PlayedTime;
+    // 游戏进度
+    var progressValue = gameSave.ProgressValue;
+    // 游戏封面
+    var coverFile = gameSave.CoverFile;
+    // 存档源文件
+    var gameFile = gameSave.GameFile;
+    // 源文件下载地址
+    var gameFileUrl = gameFile.Url;
 }
 ```
 

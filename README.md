@@ -243,11 +243,8 @@ foreach(var gameSave in collection){
 }
 ```
 
-### 查询当前用户存档
-
-我们使用 `LCQuery` 来查询当前用户的云存档。
-
-SDK 查询封装了一个限定方法用于查询当前`TDSUser`的云存档。
+### 查询云存档
+云存档只能查询当前用户的所有存档，需要查询该用户的特定存档时，可以增加相应过滤，可参考 [查询条件](https://developer.taptap.com/docs/sdk/storage/guide/objc/#%E6%9F%A5%E8%AF%A2%E6%9D%A1%E4%BB%B6)
 ```c#
 TDSUser user = await TDSUser.GetCurrent();
 LCQuery<TapGameSave> gameSaveQuery = TapGameSave.GetQueryWithUser(user);

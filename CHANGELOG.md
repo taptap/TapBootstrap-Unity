@@ -1,5 +1,13 @@
 # ChangeLog
 
+## 3.3.0
+
+### Dependencies
+
+- TapTap.Login v3.3.0
+- TapTap.Common v3.3.0
+- LeanCloud.Realtime v
+
 ## 3.2.0
 
 ### New Feature

@@ -1,0 +1,15 @@
+{
+    "name": "TapTap.Bootstrap.Runtime",
+    "references": [
+        "GUID:e8754b6153389406c963cd52996cc80f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
